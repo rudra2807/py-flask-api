@@ -1,0 +1,7 @@
+SpeechRecognition
+pydub
+PyAudio
+flask
+os
+re
+math

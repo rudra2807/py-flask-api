@@ -5,24 +5,6 @@ from pydub.silence import detect_silence
 import os
 import re
 
-def capture_audio(duration=10, output_file="user_audio.wav"):
-    """
-    Capture audio from the microphone for a given duration (in seconds)
-    and save it to a WAV file.
-    """
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Adjusting for ambient noise, please wait...")
-        recognizer.adjust_for_ambient_noise(source, duration=1)
-        print(f"Recording for {duration} seconds. Please speak now!")
-        audio_data = recognizer.record(source, duration=duration)
-
-    # Save the captured audio as a WAV file
-    with open(output_file, "wb") as f:
-        f.write(audio_data.get_wav_data())
-    print(f"Audio captured and saved as {output_file}")
-    return output_file
-
 def analyze_audio_metrics(audio_file_path,
                           min_silence_len=500,   # minimum silence length in ms
                           silence_thresh=-40,    # silence threshold (in dBFS)
